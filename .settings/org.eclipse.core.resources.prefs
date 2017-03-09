@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//WebContent/css/common.css=UTF-8
+encoding//src/com/jc_hotel/action/UsersController.java=UTF-8
+encoding//src/com/jc_hotel/mapper/UsersMapper.java=UTF-8
+encoding//src/com/jc_hotel/service/impl/UsersServiceImpl.java=UTF-8
+encoding//src/com/jc_hotel/util/MD5.java=UTF-8

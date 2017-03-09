@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
+<mapper namespace="com.jc_hotel.mapper.UsersMapper">
+	<resultMap type="com.jc_hotel.bean.Users" id="usersResultMap">
+		<id property="uid" column="uid" />
+		<result property="order_id" column="order_id" />
+		<result property="username" column="username" />
+		<result property="account" column="account" />
+		<result property="password" column="password" />
+		<result property="tellPhone" column="tellPhone" />
+		<result property="email" column="email" />
+		<result property="QQ" column="QQ" />
+	</resultMap>
+	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
+	
+	<select id="findUserByAccount" resultType="list" resultMap="usersResultMap">
+		<![CDATA[
+			select * from users where account = #{account}
+        ]]>
+	</select>
+	
+	<select id="findUserByAccountAndPassword" resultType="list" resultMap="usersResultMap" parameterType="map">
+		<![CDATA[
+			select * from users where (account = #{account} and password = #{password})
+        ]]>
+	</select>
+	
+	<select id="findUserByUid" resultType="list" resultMap="usersResultMap">
+		<![CDATA[
+			select * from users where uid = #{uid}
+        ]]>
+	</select>
+
+	<!-- 根据ID更新用户 -->
+	<update id="updateUser" parameterType="com.jc_hotel.bean.Users">
+		update users SET
+			username = #{username}
+			account = #{account}
+			password = #{password}
+			tellphone = #{tellphone}
+			email = #{email}
+		where 
+			uid = #{uid}	
+	</update>
+	
+	<!-- 添加用户 ,自动生成ID策略-->
+	<insert id="saveUser" parameterType="com.jc_hotel.bean.Users">
+		insert into users(uid,order_id,username,account,password,
+			tellPhone,email,QQ)
+		values(#{uid},#{order_id},
+			#{username},#{account},
+			#{password},#{tellPhone},
+			#{email},#{QQ})
+	</insert>
+	
+</mapper>

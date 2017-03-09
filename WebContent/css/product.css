@@ -1,0 +1,11 @@
+.content_right_uli{
+	margin-top:20px;
+	float:left;
+}
+.content_right_uli ul li a{
+	color: red;
+}
+.content_right_uli_img{
+	width:300px;
+	height:250px;
+}
